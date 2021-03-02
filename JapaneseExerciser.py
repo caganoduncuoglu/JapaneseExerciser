@@ -31,7 +31,8 @@ hint = "Hint: Radicals = " + random_word.radicals
 
 # Layout settings
 sg.theme('LightBrown13')
-layout = [[sg.Text(question + "\n" + hint, key='-TEXT-', font=('Helvetica 11'))], [sg.InputText()], [sg.Button("Check"), sg.Button("Random")]]
+layout = [[sg.Text(question + "\n" + hint, key='-TEXT-', font=('Helvetica 11'), size=(25, 2))],
+          [sg.InputText(), sg.Button("Check")], [sg.Button("Details"), sg.Button("Random")]]
 
 # Create the window
 window = sg.Window("JapaneseExerciser", layout)
@@ -53,6 +54,10 @@ while True:
         question = "What " + random_word.kanji + " means?"
         hint = "Hint: Radicals = " + random_word.radicals
         window['-TEXT-'].update(question + "\n" + hint)
+
+    # Print details about word
+    if event == "Details":
+        sg.popup("Onyomi-Kunyomi: " + random_word.onyomi + "\nRomaji: " + random_word.romaji)
 
     # Close the program if window is closed
     if event == sg.WIN_CLOSED:
