@@ -1,7 +1,7 @@
 # JapaneseExerciser
 Simple python code for mimicking memory cards for Japanese Kanji and with their meanings.
 
-#### Executable
+#### Executable (WIP)
 Program uses an excel file named "KanjiDictionary".
 
 You can download executable version on releases page, you have to add .exe file to the same folder of KanjiDictionary.xls.
