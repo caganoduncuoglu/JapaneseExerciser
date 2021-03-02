@@ -1,0 +1,6 @@
+numpy==1.20.1
+openpyxl==3.0.6
+pandas==1.2.3
+pyinstaller==4.2
+PySimpleGUI==4.34.0
+xlrd==2.0.1
