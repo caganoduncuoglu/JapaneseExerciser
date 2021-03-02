@@ -3,6 +3,7 @@ Simple python code for mimicking memory cards for Japanese Kanji and with their 
 
 #### Executable
 Program uses an excel file named "KanjiDictionary".
+
 You can download executable version on releases page, you have to add .exe file to the same folder of KanjiDictionary.xls.
 
 Also you have to install packages in the requirements.txt file. You can install packages with pip on the cmd window (on related path) by typing:
