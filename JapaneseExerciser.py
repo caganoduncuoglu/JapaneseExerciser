@@ -48,15 +48,15 @@ while True:
     # Check input if "Check" button pressed
     if event == "Check":
         if values[0] == str(random_word.meaning).lower():
-            sg.popup('Correct!')
+            sg.popup('Correct!', title="Correct!")
             if random_word in wrong_ans:  # if user corrects her/his mistake remove from notes list
                 wrong_ans.remove(random_word)
 
         elif values[0] == "":
-            sg.popup("You did not enter anything!")
+            sg.popup("You did not enter anything!", title="Empty!")
 
         else:
-            sg.popup("False! True answer was " + str(random_word.meaning))
+            sg.popup("False! True answer was " + str(random_word.meaning), title="Wrong!")
             if random_word not in wrong_ans:  # if user makes a mistake, note that word
                 wrong_ans.append(random_word)
 
@@ -69,13 +69,14 @@ while True:
 
     # Print details about word
     if event == "Details":
-        sg.popup("Onyomi-Kunyomi: " + str(random_word.onyomi) + "\nRomaji: " + str(random_word.romaji), font=('Noto Sans JP Medium', 10))
+        sg.popup("Onyomi-Kunyomi: " + str(random_word.onyomi) + "\nRomaji: " + str(random_word.romaji),
+                 font=('Noto Sans JP Medium', 10), title="Details")
 
     if event == "Notes":
         message = "Please remember these:"
         for word in wrong_ans:
             message += "\nKanji: " + str(word.kanji) + "\tMeaning: " + str(word.meaning)
-        sg.popup(message)
+        sg.popup(message, title="Notes")
 
     # Close the program if window is closed
     if event == sg.WIN_CLOSED:
