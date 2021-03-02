@@ -12,8 +12,9 @@ class Kanji:
     self.meaning = meaning
 
 
-# Read the dictionary excel
-df = pd.read_excel('KanjiDictionary.xlsx')
+# Read the dictionary xls
+df = pd.read_excel('./KanjiDictionary.xls')
+df = df.dropna()  # Avoid NaN values
 
 # Create a global word list
 word_list = []
@@ -26,8 +27,8 @@ for index, row in df.iterrows():
 # Initialize for first run
 word_count = len(word_list)
 random_word = word_list[random.randint(0, word_count-1)]
-question = "What " + random_word.kanji + " means?"
-hint = "Hint: Radicals = " + random_word.radicals
+question = "What " + str(random_word.kanji) + " means?"
+hint = "Hint: Radicals = " + str(random_word.radicals)
 
 # Layout settings
 sg.theme('LightBrown13')
@@ -46,7 +47,7 @@ while True:
 
     # Check input if "Check" button pressed
     if event == "Check":
-        if values[0] == random_word.meaning.lower():
+        if values[0] == str(random_word.meaning).lower():
             sg.popup('Correct!')
             if random_word in wrong_ans:  # if user corrects her/his mistake remove from notes list
                 wrong_ans.remove(random_word)
@@ -55,25 +56,25 @@ while True:
             sg.popup("You did not enter anything!")
 
         else:
-            sg.popup("False! True answer was " + random_word.meaning)
+            sg.popup("False! True answer was " + str(random_word.meaning))
             if random_word not in wrong_ans:  # if user makes a mistake, note that word
                 wrong_ans.append(random_word)
 
     # Select random word for next run
     if event == "Next Random":
         random_word = word_list[random.randint(0, word_count-1)]
-        question = "What " + random_word.kanji + " means?"
-        hint = "Hint: Radicals = " + random_word.radicals
+        question = "What " + str(random_word.kanji) + " means?"
+        hint = "Hint: Radicals = " + str(random_word.radicals)
         window['-TEXT-'].update(question + "\n" + hint)
 
     # Print details about word
     if event == "Details":
-        sg.popup("Onyomi-Kunyomi: " + random_word.onyomi + "\nRomaji: " + random_word.romaji, font=('Noto Sans JP Medium', 10))
+        sg.popup("Onyomi-Kunyomi: " + str(random_word.onyomi) + "\nRomaji: " + str(random_word.romaji), font=('Noto Sans JP Medium', 10))
 
     if event == "Notes":
         message = "Please remember these:"
         for word in wrong_ans:
-            message += "\nKanji: " + word.kanji + "\tMeaning: " + word.meaning
+            message += "\nKanji: " + str(word.kanji) + "\tMeaning: " + str(word.meaning)
         sg.popup(message)
 
     # Close the program if window is closed
