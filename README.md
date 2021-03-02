@@ -12,6 +12,7 @@ pip install -r requirements.txt
 ```
 
 ## Usage
+***Note:*** *You should install the given Noto Sans JP font in the Fonts folder.*
 The program will ask you what shown kanji means. To help you program will also show radicals of that kanji.
 After checking your result, you can jump onto another kanji by clicking "Next Random" button.
 
